@@ -1,0 +1,14 @@
+# Ignorar dependências do Node.js
+node_modules/
+
+# Ignorar arquivos de ambiente
+.env
+.env.example
+
+# Ignorar logs
+logs/
+*.log
+
+# Ignorar cache do sistema operacional
+.DS_Store
+Thumbs.db
