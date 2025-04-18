@@ -1,67 +1,92 @@
-/* estilo.css */
+/* Estilo geral */
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #f1f1b9;
-    color: #333333;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 2rem;
-    background-color: #006d77;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ffd166;
-  }
-  
-  .search-bar input {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 25px;
-    background-color: 	#ffffff;
-    color: #000000;
-    width: 250px;
-    transition: background-color 0.3s;
-  }
-  
-  .search-bar input:focus {
-    outline: none;
-    background-color: #cccccc;
-  }
-  
-  .nav-links a {
-    margin-left: 1.5rem;
-    text-decoration: none;
-    color: 	#ffd166;
-    font-weight: 500;
-    transition: color 0.3s;
-  }
-  
-  .nav-links a:hover {
-    color: #665b38;
-    transform: translateY(-10px);
-  }
-  
-  .image-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-size: cover;
-    background-position: center;
-  }
-  .image-section img{
-    width: 280px;
-    height: 340px; 
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 20px;
-    display: block;
-  }
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background-color: #1f1f1f;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Cabeçalho */
+header {
+  background-color: #1f1f1f;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #ffc107;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  color: #ffc107;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+nav a {
+  color: #ffc107;
+  margin-left: 2rem;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Campo de busca */
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.search-container input[type="text"] {
+  padding: 0.4rem 1rem;
+  width: 300px;
+  border-radius: 20px;
+  border: 1px solid #444;
+  outline: none;
+  background-color: #111;
+  color: #ccc;
+  font-size: 1rem;
+}
+
+/* Seção de imagens */
+.image-section {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1,2rem;
+  padding: 3rem;
+  justify-items: center;
+  align-items: center;
+  transform: translateY(-1rem);
+}
+
+/* Imagens dos livros */
+.image-section img {
+  width: 200px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.image-section img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
+}
+
+/* Rodapé */
+footer {
+  background-color: #1f1f1f;
+  color: #aaa;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
