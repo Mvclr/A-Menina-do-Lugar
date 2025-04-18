@@ -2,7 +2,7 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const path = require("path");
-const router = require("./routes");
+const router = require("./routes/root.js");
 const app = express();
 
 app.use(router);
