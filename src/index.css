@@ -1,0 +1,15 @@
+body {
+  background: #D6B897;
+  color: #333366; /* Dark blue for better readability */
+  font-family: 'Poppins', 'Comic Neue', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Text Titles */
+h1, h2, h3 {
+  color: #ff5e99; /* Vivid pink for highlights */
+  font-weight: bold;
+}
+
