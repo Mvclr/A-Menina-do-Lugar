@@ -1,0 +1,45 @@
+.sectionAll{
+min-height: 1000px;
+
+}
+
+
+.imageSection {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1,2rem;
+    padding: 3rem;
+    padding-top: 0.5rem;
+    justify-items: center;
+    align-items: center;
+    transform: translateY(-1rem);
+    min-height: 74vh;
+  }
+  
+.imageSection img {
+    height: 400px;
+    width: 300px;
+    margin: 10px;
+    object-fit: cover;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.imageSection img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(255, 105, 180, 0.4);
+  cursor: pointer;
+}
+h1{
+  flex: 1 1 50%;
+  max-width: 100%;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 2rem;
+}
+.imgDiv{
+  text-align: center;
+}
