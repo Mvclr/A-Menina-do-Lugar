@@ -1,0 +1,75 @@
+.contato {
+    padding: 60px 20px;
+    text-align: center;
+  }
+  
+  .titulo {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  
+  .subtitulo {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  
+  .card {
+    border: 1px solid #b89d81;
+    border-top: 5px solid transparent;
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform 0.3s;
+    background-color: #ddb385;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .cardTitulo {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .email {
+    border-top-color: #0cb;
+  }
+  
+  .support {
+    border-top-color: #f66;
+  }
+  
+  .media {
+    border-top-color: #0cb;
+  }
+  
+  .partnerships {
+    border-top-color: #f66;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: rgb(249, 250, 166);
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #099;
+  }
+  
