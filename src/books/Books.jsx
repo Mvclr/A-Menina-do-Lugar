@@ -3,7 +3,7 @@ import books from './booksArray.jsx'
 
 function Book() {
   return (
-    <section className={styles.sectionAll} id='Home'>
+    <section id='Home'>
       <h1>Livros</h1>
       <main className={styles.imageSection}>
         {books.map((book, index) => (

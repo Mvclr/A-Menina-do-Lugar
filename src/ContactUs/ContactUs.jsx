@@ -1,13 +1,17 @@
 import styles from './ContactUs.module.css';
 import { useRef } from 'react';
 
+
 function ContactUs(){
   const emailRef = useRef(null);
-
+  const mensagemRef = useRef(null);
   const copiarTexto = async () => {
     try {
       await navigator.clipboard.writeText(emailRef.current.textContent);
-      alert(`Texto copiado: ${emailRef.current.textContent}`);
+      mensagemRef.current.textContent = "Email copiado com sucesso!";
+      setTimeout(() => {
+        mensagemRef.current.textContent = ""; // Limpa a mensagem após 2 segundos
+      }, 6000);
     } catch (err) {
       alert("Erro ao copiar.");
     }
@@ -26,13 +30,14 @@ function ContactUs(){
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam repellat commodi, at sapiente incidunt, voluptates minus eveniet ipsa ad cumque error laborum itaque aliquid ut facilis enim quisquam recusandae? Sit.</p>
           <p ref={emailRef}>contatoExemplo@email.com</p>
           <button onClick={copiarTexto}>Copiar email</button>
+              <p className={`styles.mensagemCopy`} ref={mensagemRef}></p>
         </div>
 
         <div className={styles.card}>
           <h3 className={`${styles.cardTitulo} ${styles.support}`}>Instagram</h3>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas nam quod temporibus numquam quisquam. Aperiam quae repudiandae pariatur quod distinctio mollitia quis laborum ipsum illum? Officia culpa laudantium magnam qui.</p>
           <a href="https://www.instagram.com/ifal.maceio/" target='_blank'><button>Ir para nosso Instagram</button></a>
-          <p>ou nos procure com @ifal.maceio</p>
+          <p>ou nos procure com o @ifal.maceio</p>
         </div>
 
         <div className={styles.card}>

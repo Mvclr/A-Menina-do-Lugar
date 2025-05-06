@@ -7,7 +7,7 @@ import books from '../books/booksArray';
 
 export default function AboutUs() {
   return (
-    <section className={styles.sectionAll} id='AboutUs'>
+    <section id='AboutUs'>
       <div className={styles.aboutContainer}>
         <div className={styles.aboutText}>
           <h4 className={styles.aboutSubheading}>A Menina do Lugar</h4>

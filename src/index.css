@@ -12,4 +12,8 @@ h1, h2, h3 {
   color: #ff5e99; /* Vivid pink for highlights */
   font-weight: bold;
 }
+section{
+  min-height: 60vh;
+  padding: 2rem;
+}
 

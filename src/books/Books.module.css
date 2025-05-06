@@ -1,9 +1,3 @@
-.sectionAll{
-min-height: 1000px;
-
-}
-
-
 .imageSection {
     flex-grow: 1;
     display: grid;

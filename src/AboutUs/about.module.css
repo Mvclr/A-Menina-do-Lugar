@@ -1,7 +1,3 @@
-.sectionAll{
-  min-height: 1000px;
-}
-
 .aboutContainer {
   display: flex;
   justify-content: space-between;
