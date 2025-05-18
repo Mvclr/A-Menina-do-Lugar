@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Button } from "../components/ui/button.jsx";
-import { Card } from "../components/ui/card.jsx";
+import { Button } from "../../components/ui/button.jsx";
+import { Card } from "../../components/ui/card.jsx";
 import styles from "./game.module.css";
 
 const boardSize = 30;
@@ -17,14 +17,23 @@ const events = {
   26: { type: "back", message: "Você esqueceu o coco ralado! Volte para a casa 9.", to: 9 },
 };
 
-export default function CocadaGame() {
+export default function CoruripeGame() {
   const [position, setPosition] = useState(1);
   const [message, setMessage] = useState("");
   const [waitingTurns, setWaitingTurns] = useState(0);
   const [lastRoll, setLastRoll] = useState(null);
 
   const rollDice = () => Math.floor(Math.random() * 6) + 1;
-
+  const resetGame = () => {
+    setPosition(1);
+    setMessage("");
+    setWaitingTurns(0);
+    setLastRoll(null);
+  };
+  const handleReset = () => {
+    resetGame();
+  };
+  
   const handlePlay = () => {
     if (waitingTurns > 0) {
       setWaitingTurns(waitingTurns - 1);
@@ -84,7 +93,7 @@ export default function CocadaGame() {
           {message}
         </div>
         {position < boardSize && <Button onClick={handlePlay}>Jogar dado</Button>}
-        <button>Reiniciar jogo</button>
+        <button onClick={handleReset}>Reiniciar jogo</button>
       </Card>
       
     </div>
