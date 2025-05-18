@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: #d2a87a;
+  min-height: 100vh;
+}
+
+.card {
+  padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #e6398f;
+}
+
+.boardImage{
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  margin-top: 2rem;
+}
+
+.status {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  color: #1d3557;
+  font-weight: 600;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  margin: 1rem;
+  background-color: #facc15;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;;
+}
+
+button:hover {
+  background-color: #fbbf24;
+}
