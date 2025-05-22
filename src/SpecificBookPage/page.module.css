@@ -1,0 +1,55 @@
+.aboutContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem 10rem;
+  gap: 10rem;
+  flex-wrap: wrap;
+  background-color: #394b59;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.aboutText {
+  flex: 1 1 50%;
+  max-width: 100%;
+  text-align: center;
+  color: #f0f0f0;
+}
+
+.aboutSubheading {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  color: #b0b8c1;
+}
+
+.aboutHeading {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  color: #d4af37;
+  font-family: 'Merriweather', serif;
+}
+
+.aboutParagraph {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #e6e6e6;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+.swiperContainer {
+  flex: 1 1 40%;
+  max-width: 400px;
+}
+
+:global(.swiper-slide img) {
+  width: 100%;
+  border-radius: 2rem;
+  object-fit: cover;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
