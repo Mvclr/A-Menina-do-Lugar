@@ -12,13 +12,15 @@ function ContactUs(){
       setTimeout(() => {
         mensagemRef.current.textContent = ""; // Limpa a mensagem após 2 segundos
       }, 6000);
-    } catch (err) {
+    } catch (error) {
       alert("Erro ao copiar.");
+      console.log(error);  
     }
   };
   
   return (
-    <section className={styles.contato} id="ContactUs">
+    <section className={styles.contactSection} id="ContactUs">
+      <main className={styles.contato}>
       <h2 className={styles.titulo}>Nos contate</h2>
       <p className={styles.subtitulo}>
         Fale conosco de diferentes formas!
@@ -37,7 +39,7 @@ function ContactUs(){
           <h3 className={`${styles.cardTitulo} ${styles.support}`}>Instagram</h3>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas nam quod temporibus numquam quisquam. Aperiam quae repudiandae pariatur quod distinctio mollitia quis laborum ipsum illum? Officia culpa laudantium magnam qui.</p>
           <a href="https://www.instagram.com/ifal.maceio/" target='_blank'><button>Ir para nosso Instagram</button></a>
-          <p>ou nos procure com o @ifal.maceio</p>
+          <p>Ou nos procure com o @ifal.maceio</p>
         </div>
 
         <div className={styles.card}>
@@ -48,6 +50,7 @@ function ContactUs(){
         </div>
 
       </div>
+      </main>
     </section>
   );
 };
