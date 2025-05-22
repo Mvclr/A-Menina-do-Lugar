@@ -1,6 +1,6 @@
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
-import Book from "../books/books";
+import Book from "../books/Books";
 import AboutUs from "../AboutUs/AboutUs";
 import ContactUs from "../ContactUs/ContactUs";
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <>
       <Header />
       <AboutUs/>
-      <Book />
+      <Book/>
       <ContactUs/>
       <Footer />
     </>
