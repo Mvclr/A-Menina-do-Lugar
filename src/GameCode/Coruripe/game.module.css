@@ -1,54 +1,78 @@
+:root {
+  --cor-fundo: #2e3a46;         /* azul petróleo escuro */
+  --cor-cartao: #394b59;        /* cinza-azulado */
+  --cor-texto: #f0f0f0;         /* branco suave */
+  --cor-destaque: #d4af37;      /* dourado queimado */
+  --cor-hover: #e1c16e;         /* dourado claro */
+  --sombra: 0 6px 18px rgba(0, 0, 0, 0.4);
+  --borda-radius: 14px;
+  --fonte-principal: 'Merriweather', serif;
+  --fonte-secundaria: 'Segoe UI', sans-serif;
+}
+
+/* Container principal */
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  background-color: #d2a87a;
+  background-color: var(--cor-fundo);
   min-height: 100vh;
+  font-family: var(--fonte-secundaria);
 }
 
+/* Cartão central */
 .card {
-  padding: 2rem;
+  padding: 2.5rem;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1100px;
+  background: var(--cor-cartao);
+  border-radius: var(--borda-radius);
+  box-shadow: var(--sombra);
   text-align: center;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: var(--cor-texto);
 }
 
+/* Título */
 .title {
-  font-size: 2rem;
+  font-size: 2.5rem;
+  font-family: var(--fonte-principal);
   font-weight: bold;
-  margin-bottom: 1rem;
-  color: #e6398f;
+  margin-bottom: 1.5rem;
+  color: var(--cor-destaque);
 }
 
-.boardImage{
+/* Imagem do tabuleiro */
+.boardImage {
   max-width: 100%;
   height: auto;
-  border-radius: 16px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  border-radius: var(--borda-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   margin-top: 2rem;
 }
 
+/* Status do jogo */
 .status {
   margin: 1rem 0;
   font-size: 1.2rem;
-  color: #1d3557;
-  font-weight: 600;
+  color: #e6e6e6;
+  font-weight: 500;
 }
 
+/* Botões */
 button {
-  padding: 0.75rem 1.5rem;
+  padding: 0.8rem 1.6rem;
   font-size: 1rem;
   margin: 1rem;
-  background-color: #facc15;
+  background-color: var(--cor-destaque);
   border: none;
-  border-radius: 8px;
-  cursor: pointer;;
+  border-radius: 10px;
+  color: #2e2e2e;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #fbbf24;
+  background-color: var(--cor-hover);
 }

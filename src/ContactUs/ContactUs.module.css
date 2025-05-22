@@ -1,73 +1,97 @@
+.contactSection{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+  gap: 2rem;
+  padding: 3rem 6vw;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: #2c3847;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
 .contato {
-    text-align: center;
-  }
-  
-  .titulo {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
-  
-  .subtitulo {
-    max-width: 600px;
-    margin: 0 auto 40px;
-    font-size: 1rem;
-    color: #666;
-  }
-  
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-  }
-  
-  .card {
-    border: 1px solid #b89d81;
-    border-top: 5px solid transparent;
-    padding: 20px;
-    border-radius: 8px;
-    transition: transform 0.3s;
-    background-color: #ddb385;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .cardTitulo {
-    font-size: 1.25rem;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
-  .email {
-    border-top-color: #0cb;
-  }
-  
-  .support {
-    border-top-color: #f66;
-  }
-  
-  .media {
-    border-top-color: #0cb;
-  }
-  
-  .partnerships {
-    border-top-color: #f66;
-  }
-  
-  button {
-    margin-top: 10px;
-    padding: 8px 16px;
-    background-color: rgb(249, 250, 166);
-    color: black;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: #099;
-  }
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 3rem 6vw;
+  background-color: #394b59;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  width: 100%;
+}
+
+.titulo {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  color: #d4af37;
+  font-family: 'Merriweather', serif;
+  letter-spacing: 1px;
+}
+
+.subtitulo {
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  font-size: 1.1rem;
+  color: #e6e6e6;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  margin: 0;
+  justify-items: center;
+  align-items: start;
+}
+
+.card {
+  border: 2px solid #d4af37;
+  padding: 2rem 1.2rem 2.5rem 1.2rem;
+  border-radius: 1.5rem;
+  background-color: #2c3847;
+  color: #f4f4f4;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 340px;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 32px rgba(212, 175, 55, 0.18);
+}
+
+.cardTitulo {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #d4af37;
+  font-weight: 700;
+  font-family: 'Merriweather', serif;
+  letter-spacing: 1px;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.8rem 2rem;
+  background-color: #d4af37;
+  color: #1a1a1a;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.18);
+}
+
+button:hover {
+  background-color: #e6c95c;
+  transform: scale(1.05);
+}
