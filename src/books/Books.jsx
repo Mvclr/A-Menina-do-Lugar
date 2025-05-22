@@ -2,7 +2,6 @@ import styles from './Books.module.css'
 import books from './booksArray.jsx'
 
 function Book() {
-
   async function handleClick() {
     try {
       const response = await fetch(
@@ -20,8 +19,8 @@ function Book() {
 
   return (
     <section id='Home'>
-      <h1>Livros</h1>
       <main className={styles.imageSection}>
+        
         {books.map((book, index) => (
           <div key={index} className={styles.imgDiv}>
             <span className={styles.bookTitle}>{book.name}</span>
@@ -31,6 +30,7 @@ function Book() {
               alt={book.name}
               className={styles.bookImage}
             />
+            <button>Ir para página</button>
           </div>
         ))}
       </main>
