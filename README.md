@@ -1,0 +1,2 @@
+O projeto A Menina do Lugar visa a ida até cidades do interior do estado de Alagoas, para que ao falar com crianças e adolescente principalmente em ambientes escolares daquele período, seja criado com a experiência livros e jogos que representam e compartilham para as outras pessoas não só o dia a dia da cidade mas como também sua cultura e pessoas de importância locais. 
+O projeto busca sempre compartilhar de forma leve e divertida, fazendo com que o conteúdo ao entrar em contato com as pessoas não só as divirta mas também as ensine a cultura.
