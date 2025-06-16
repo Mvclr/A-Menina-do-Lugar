@@ -18,8 +18,8 @@ function Book() {
   }
 
   return (
-    <section id='Home'>
-      <main className={styles.imageSection}>
+    
+      <main className={styles.imageSection} id='Livros'>
         
         {books.map((book, index) => (
           <div key={index} className={styles.imgDiv}>
@@ -30,11 +30,12 @@ function Book() {
               alt={book.name}
               className={styles.bookImage}
             />
-            <button>Ir para página</button>
+            <button>Baixar PDF</button>
+            <button>Jogo de Tabuleiro</button>
           </div>
         ))}
       </main>
-    </section>
+
   );
 }
 

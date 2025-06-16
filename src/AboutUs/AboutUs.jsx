@@ -7,8 +7,8 @@ import books from '../books/booksArray';
 
 export default function AboutUs() {
   return (
-    <section id='AboutUs'>
-      <div className={styles.aboutContainer}>
+
+      <div className={styles.aboutContainer} id='sobreNós'>
         <div className={styles.aboutText}>
           <h4 className={styles.aboutSubheading}>A Menina do Lugar</h4>
           <h2 className={styles.aboutHeading}>Cultura e Educação</h2>
@@ -40,6 +40,6 @@ export default function AboutUs() {
           ))}
         </Swiper>
       </div>
-    </section>
+
   );
 }

@@ -1,23 +1,23 @@
 body {
-  background-color: #394b59;
-  color: #e6e6e6;
-  font-family: 'Poppins', 'Merriweather', 'Comic Neue', sans-serif;
+  background-color: #eed4d4;
+  color: #222;
+  font-family: 'Merriweather', 'Georgia', serif;
   margin: 0;
   padding: 0;
 }
 
 h1, h2, h3 {
-  color: #d4af37;
-  font-weight: bold;
+  color: #2d2d2d;
   font-family: 'Merriweather', serif;
+  font-weight: 700;
   letter-spacing: 1px;
 }
 
 section {
   min-height: 60vh;
   padding: 2rem 6vw;
-  background: rgba(44, 56, 71, 0.92);
+  background: #fff;
   border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
   margin-bottom: 2rem;
 }

@@ -1,0 +1,44 @@
+.diceContainer {
+  perspective: 600px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.dice {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+
+.face {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: #fff1bb;
+  border: 2px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.front  { transform: rotateY(0deg) translateZ(40px); }
+.back   { transform: rotateY(180deg) translateZ(40px); }
+.right  { transform: rotateY(90deg) translateZ(40px); }
+.left   { transform: rotateY(-90deg) translateZ(40px); }
+.top    { transform: rotateX(90deg) translateZ(40px); }
+.bottom { transform: rotateX(-90deg) translateZ(40px); }
+
+.spin {
+  animation: spin 1s ease-in-out;
+}
+
+
+@keyframes spin {
+  from { transform: rotateX(0deg) rotateY(0deg); }
+  to   { transform: rotateX(360deg) rotateY(360deg); }
+}

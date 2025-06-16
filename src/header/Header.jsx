@@ -6,9 +6,9 @@ function Header(){
     <div className={styles.logo}>A Menina do Lugar</div>
     
     <nav className={styles.navLinks}>
-      <a href="#Home" >Livros</a>
-      <a href="#AboutUs" >Sobre Nós</a>
-      <a href="#ContactUs" >Contato</a>
+      <a href="#Livros" >Livros</a>
+      <a href="#sobreNós" >Sobre Nós</a>
+      <a href="#contato" >Contato</a>
     </nav>
   </header>
     );

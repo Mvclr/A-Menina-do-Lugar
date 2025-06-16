@@ -19,8 +19,10 @@ function ContactUs(){
   };
   
   return (
-    <section className={styles.contactSection} id="ContactUs">
-      <main className={styles.contato}>
+     
+      
+      <main className={styles.contato} id='contato'>
+        
       <h2 className={styles.titulo}>Nos contate</h2>
       <p className={styles.subtitulo}>
         Fale conosco de diferentes formas!
@@ -51,7 +53,6 @@ function ContactUs(){
 
       </div>
       </main>
-    </section>
   );
 };
 

@@ -4,6 +4,9 @@ import Book from "../books/Books";
 import AboutUs from "../AboutUs/AboutUs";
 import CoruripeGame from "../GameCode/Coruripe/gameCoruripe";
 import CafurnaGame from "../GameCode/Cafurna/gameCafurna";
+
+
+
 function BookPage() {
   return (
     <>

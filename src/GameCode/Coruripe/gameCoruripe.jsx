@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "../../components/ui/button.jsx";
 import { Card } from "../../components/ui/card.jsx";
 import styles from "./game.module.css";
-
+import diceStyles from "../diceStyles.module.css";
 const boardSize = 30;
 
 const events = {
@@ -17,11 +17,14 @@ const events = {
   26: { type: "back", message: "Você esqueceu o coco ralado! Volte para a casa 9.", to: 9 },
 };
 
-export default function CoruripeGame() {
+
+function CafurnaGame() {
   const [position, setPosition] = useState(1);
   const [message, setMessage] = useState("");
   const [waitingTurns, setWaitingTurns] = useState(0);
   const [lastRoll, setLastRoll] = useState(null);
+  const [isRolling, setIsRolling] = useState(false);
+
 
   const rollDice = () => Math.floor(Math.random() * 6) + 1;
   const resetGame = () => {
@@ -35,67 +38,94 @@ export default function CoruripeGame() {
   };
   
   const handlePlay = () => {
-    if (waitingTurns > 0) {
-      setWaitingTurns(waitingTurns - 1);
-      setMessage("Esperando rodada...");
-      return;
-    }
+  if (waitingTurns > 0) {
+    setWaitingTurns(waitingTurns - 1);
+    setMessage("Esperando rodada...");
+    return;
+  }
 
-    const roll = rollDice();
-    setLastRoll(roll);
-    let newPosition = position + roll;
+  // Reinicia animação
+  setIsRolling(false); // remove classe
+  setTimeout(() => setIsRolling(true), 10); // adiciona classe com delay mínimo
 
-    if (newPosition >= boardSize) {
-      setMessage("Parabéns! Você chegou na casa da vovó!");
-      setPosition(boardSize);
-      return;
-    }
+  const roll = rollDice();
+  setLastRoll(roll);
+  let newPosition = position + roll;
 
-    const event = events[newPosition];
-    if (event) {
-      if (event.type === "wait") {
-        setWaitingTurns(event.turns);
-        setMessage(event.message);
-      } else if (event.type === "advance") {
-        newPosition += event.move;
-        setMessage(event.message);
-      } else if (event.type === "back") {
-        newPosition = event.to;
-        setMessage(event.message);
-      } else if (event.type === "condition") {
-        if (!event.condition(roll)) {
-          setMessage(event.message + " Você não pode andar!");
-          return;
-        } else {
-          setMessage(event.message + " Você conseguiu negociar!");
-        }
+  if (newPosition >= boardSize) {
+    setMessage("Parabéns! Você chegou na casa da vovó!");
+    setPosition(boardSize);
+    return;
+  }
+
+  const event = events[newPosition];
+  if (event) {
+    if (event.type === "wait") {
+      setWaitingTurns(event.turns);
+      setMessage(event.message);
+    } else if (event.type === "advance") {
+      newPosition += event.move;
+      setMessage(event.message);
+    } else if (event.type === "back") {
+      newPosition = event.to;
+      setMessage(event.message);
+    } else if (event.type === "condition") {
+      if (!event.condition(roll)) {
+        setMessage(event.message + " Você não pode andar!");
+        return;
+      } else {
+        setMessage(event.message + " Você conseguiu negociar!");
       }
-    } else {
-      setMessage(`Avançou ${roll} casas.`);
+    } else if (event.type === "bonus") {
+      setMessage(event.message);
+      return;
     }
+  } else {
+    setMessage(`Avançou ${roll} casas.`);
+  }
 
-    setPosition(newPosition);
-  };
+  setPosition(newPosition);
+};
+
 
   return (
 
 
 
     <div className={styles.container}>
-      
+    
       <Card className={styles.card}>
-        <h1 className={styles.title}>Jogo Coruripe</h1>
-        <img src="src/assets/Jogos/Jogo_Coruripe.png" alt="Tabuleiro" width={1000} height={500} className={styles.boardImage} />
-        <p>Casa atual: {position}</p>
-        <p>Resultado do dado: {lastRoll ?? "-"}</p>
-        {/* Replace motion.div with div if not using Framer Motion */}
-        <div className={styles.status}> 
-          {message}
-        </div>
-        {position < boardSize && <Button onClick={handlePlay}>Jogar dado</Button>}
-        <button onClick={handleReset}>Reiniciar jogo</button>
-      </Card>
-      
+  <h1 className={styles.title}>Jogo Cafurna</h1>
+  <img src="src/assets/Jogos/Jogo_Coruripe.png" alt="Tabuleiro" width={1000} height={500} className={styles.boardImage}/>
+  <p>Casa atual: {position}</p>
+  <p>Resultado do dado: {lastRoll ?? "-"}</p>
+  <div className={styles.status}>{message}</div>
+
+  {/* 🎲 Dado 3D */}
+  <div className={diceStyles.diceContainer}>
+    <div className={`${diceStyles.dice} ${isRolling ? diceStyles.spin : ""}`}>
+      <div className={diceStyles.face + " " + diceStyles.front}>{lastRoll ?? "?"}</div>
+      <div className={diceStyles.face + " " + diceStyles.back}>{lastRoll ?? "?"}</div>
+      <div className={diceStyles.face + " " + diceStyles.right}>{lastRoll ?? "?"}</div>
+      <div className={diceStyles.face + " " + diceStyles.left}>{lastRoll ?? "?"}</div>
+      <div className={diceStyles.face + " " + diceStyles.top}>{lastRoll ?? "?"}</div>
+      <div className={diceStyles.face + " " + diceStyles.bottom}>{lastRoll ?? "?"}</div>
+    </div>
+  </div>
+
+  {/* Botões */}
+  <div>
+    {position < boardSize && <Button onClick={handlePlay}>Jogar dado</Button>}
+    <button onClick={handleReset}>Reiniciar jogo</button>
+  </div>
+</Card>
+
     </div>
   );
 }
+
+
+export default CafurnaGame;
+
+
+
