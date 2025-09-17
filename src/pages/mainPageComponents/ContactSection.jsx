@@ -1,85 +1,85 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import emailjs from 'emailjs-com';
 
-// Componente Contato
+const Notification = ({ message, type, onHide }) => {
+  if (!message) return null;
+  
+  const baseClasses = "fixed top-5 right-5 p-4 rounded-lg shadow-lg text-white transition-opacity duration-300 z-50";
+  const typeClasses = type === 'success' ? 'bg-aml-accent' : 'bg-aml-action';
+  
+  setTimeout(onHide, 5000);
+  
+  return (
+    <div className={`${baseClasses} ${typeClasses}`}>
+      <span>{message}</span>
+      <button onClick={onHide} className="ml-4 font-bold">X</button>
+    </div>
+  );
+};
+
 const ContactSection = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  const form = useRef();
+
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [notification, setNotification] = useState({ show: false, message: '', type: '' });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email).toLowerCase());
+
+  const hideNotification = () => setNotification({ show: false, message: '', type: '' });
+
+  const showNotification = (message, type) => setNotification({ show: true, message, type });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-    setFormData({ name: '', email: '', message: '' });
-  };
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    if (!formData.name.trim()) {
+      showNotification("Por favor, digite seu nome.", "error");
+      return;
+    }
+    if (!validateEmail(formData.email)) {
+      showNotification("Por favor, insira um endereço de email válido.", "error");
+      return;
+    }
+    if (!formData.message.trim()) {
+      showNotification("Por favor, digite sua mensagem.", "error");
+      return;
+    }
+
+    setIsLoading(true);
+
+    const serviceID = "service_uvgcn0l";
+    const templateID = "template_788r12o";
+    const publicKey = "MRfnyFzpAWcGYAjKD";
+
+    emailjs.sendForm(serviceID, templateID, form.current, publicKey)
+      .then((response) => {
+        showNotification("Mensagem enviada com sucesso!", "success");
+        setFormData({ name: "", email: "", message: "" });
+      })
+      .catch((err) => {
+        showNotification("Falha ao enviar a mensagem.", "error");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
-    <section id="contact" className="relative z-20 py-20 bg-gradient-to-br from-lime-100 to-green-100 text-black ">
-      <div
-        className="absolute inset-0 w-full h-full z-0 pointer-events-none"
-        style={{
-          backgroundImage: "url('/src/Images/Folhas-Fundo.png')",
-          backgroundRepeat: "repeat",
-          backgroundSize: "auto",
-          opacity: 0.25
-        }}
-        aria-hidden="true"
-      />
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold mb-6">
-            Entre em <span className="bg-gradient-to-r from-gray-400 to-blue-500 bg-clip-text text-transparent">Contato</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-gray-400 to-blue-500 mx-auto mb-8"></div>
-          <p className="text-xl text-blue-800 max-w-2xl mx-auto">
-            Estamos aqui para ajudar. Entre em contato conosco!
-          </p>
-        </div>
-        
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          <div className="space-y-8">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-r from-gray-500 to-blue-400 text-blue-950 rounded-full flex items-center justify-center">
-                📍
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">Endereço</h3>
-                <p className="text-blue-800">Rua das Flores, 123 - Centro</p>
-                <p className="text-blue-800">São Paulo, SP - 01000-000</p>
-              </div>
-            </div>
-            
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-r from-gray-500 to-blue-400 text-blue-950 rounded-full flex items-center justify-center">
-                📞
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">Telefone</h3>
-                <p className="text-blue-800">(11) 9999-9999</p>
-              </div>
-            </div>
-            
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-r from-gray-500 to-blue-400 text-blue-950 rounded-full flex items-center justify-center">
-                📧
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">Email</h3>
-                <p className="text-blue-800">contato@minhamarca.com</p>
-              </div>
-            </div>
+    <>
+      {notification.show && <Notification message={notification.message} type={notification.type} onHide={hideNotification} />}
+      <section id="contact" className="py-20 bg-aml-secondary text-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-bold mb-4">Entre em Contato</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-aml-primary to-aml-action mx-auto"></div>
           </div>
-          
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-            <div className="space-y-6">
+          <div className="max-w-2xl mx-auto bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 shadow-xl">
+            <form ref={form} onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <input
                   type="text"
@@ -88,7 +88,7 @@ const ContactSection = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/20 border border-black/30 rounded-lg text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300"
+                  className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-aml-primary transition-all duration-300"
                 />
               </div>
               <div>
@@ -99,7 +99,7 @@ const ContactSection = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/20 border border-black/30 rounded-lg text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300"
+                  className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-aml-primary transition-all duration-300"
                 />
               </div>
               <div>
@@ -110,21 +110,22 @@ const ContactSection = () => {
                   onChange={handleChange}
                   required
                   rows="5"
-                  className="w-full px-4 py-3 bg-white/20 border border-black/30 rounded-lg text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300 resize-none"
+                  className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-aml-primary transition-all duration-300 resize-none"
                 ></textarea>
               </div>
               <button
-                type="button"
-                onClick={handleSubmit}
-                className="w-full bg-gradient-to-r from-gray-500 to-blue-400 text-blue-950 py-3 rounded-lg font-bold hover:from-yellow-400 hover:to-orange-500 transform hover:scale-105 transition-all duration-300 shadow-lg"
+                type="submit"
+                disabled={isLoading}
+                className="w-full bg-aml-primary text-aml-dark py-3 rounded-lg font-bold hover:bg-yellow-500 transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Enviar Mensagem
+                {isLoading ? 'Enviando...' : 'Enviar Mensagem'}
               </button>
-            </div>
+            </form>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
+
 export default ContactSection;
