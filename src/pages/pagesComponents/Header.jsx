@@ -1,100 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { useApp } from "../../context/AppContext";
 
-// Componente Header
-const Header = ({ currentPage, setCurrentPage }) => {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { navigateToHome, navigateToGames, scrollToSection } = useApp();
 
-  const scrollToSection = (sectionId) => {
-    if (currentPage !== 'home') {
-      setCurrentPage('home');
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    } else {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
+  const handleScrollToSection = (sectionId) => {
+    scrollToSection(sectionId);
+    setIsMenuOpen(false);
+  };
+
+  const handleGamesClick = () => {
+    navigateToGames();
     setIsMenuOpen(false);
   };
 
   return (
-    <header className="bg-gray-800 text-white shadow-2xl sticky top-0 z-50">
+    <header className="bg-aml-dark text-white shadow-lg sticky top-0 z-50">
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           <button
-            onClick={() => setCurrentPage('home')}
-            className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-gray-300 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
+            onClick={navigateToHome}
+            className="text-2xl font-bold text-aml-primary hover:scale-105 transition-transform duration-300"
           >
             A Menina Do Lugar
           </button>
-          
-          <nav className="hidden md:flex space-x-8">
+
+          <nav className="hidden md:flex items-center space-x-6">
             <button
-              onClick={() => scrollToSection('items')}
-              className="hover:text-yellow-400 transition-colors duration-300 text-lg font-medium"
+              onClick={() => handleScrollToSection("items")}
+              className="hover:text-aml-primary transition-colors duration-300 font-medium"
             >
               Livros
             </button>
             <button
-              onClick={() => scrollToSection('contact')}
-              className="hover:text-yellow-400 transition-colors duration-300 text-lg font-medium"
+              onClick={() => handleScrollToSection("contact")}
+              className="hover:text-aml-primary transition-colors duration-300 font-medium"
             >
               Contato
             </button>
             <button
-              onClick={() => scrollToSection('contact')}
-              className="hover:text-yellow-400 transition-colors duration-300 text-lg font-medium"
+              onClick={handleGamesClick}
+              className="bg-aml-primary text-aml-dark font-bold px-5 py-2 rounded-full hover:bg-yellow-500 transition-colors duration-300"
             >
               Jogos
             </button>
           </nav>
 
-          <button 
-            className="md:hidden text-2xl hover:text-yellow-400 transition-colors duration-300"
+          <button
+            className="md:hidden text-2xl hover:text-aml-primary transition-colors duration-300"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            ☰
+            &#9776;
           </button>
         </div>
 
         {isMenuOpen && (
-          <nav className="md:hidden mt-4 space-y-2 animate-fade-in">
-            <button
-              onClick={() => scrollToSection('home')}
-              className="block py-2 hover:text-yellow-400 transition-colors duration-300 w-full text-left"
-            >
-              Início
-            </button>
-            <button
-              onClick={() => scrollToSection('about')}
-              className="block py-2 hover:text-yellow-400 transition-colors duration-300 w-full text-left"
-            >
-              Sobre Nós
-            </button>
-            <button
-              onClick={() => scrollToSection('items')}
-              className="block py-2 hover:text-yellow-400 transition-colors duration-300 w-full text-left"
-            >
-              Produtos
-            </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="block py-2 hover:text-yellow-400 transition-colors duration-300 w-full text-left"
-            >
-              Contato
-            </button>
-            
+          <nav className="md:hidden mt-4 space-y-2">
+            <button onClick={navigateToHome} className="block w-full text-left py-2 rounded-md px-3 hover:bg-aml-secondary">Início</button>
+            <button onClick={() => handleScrollToSection("about")} className="block w-full text-left py-2 rounded-md px-3 hover:bg-aml-secondary">Sobre Nós</button>
+            <button onClick={() => handleScrollToSection("items")} className="block w-full text-left py-2 rounded-md px-3 hover:bg-aml-secondary">Livros</button>
+            <button onClick={() => handleScrollToSection("contact")} className="block w-full text-left py-2 rounded-md px-3 hover:bg-aml-secondary">Contato</button>
+            <button onClick={handleGamesClick} className="block w-full text-left py-2 rounded-md px-3 hover:bg-aml-secondary">Jogos</button>
           </nav>
         )}
       </div>
     </header>
   );
 };
-
 
 export default Header;
