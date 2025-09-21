@@ -52,6 +52,7 @@ export const initialState = {
   loading: false,
   error: null,
   gameScores: { /* ... game scores initial state ... */ },
+  theme: "light",
 };
 
 // Actions
@@ -62,6 +63,7 @@ export const ACTIONS = {
   SET_ERROR: "SET_ERROR",
   UPDATE_GAME_SCORE: "UPDATE_GAME_SCORE",
   LOAD_GAME_SCORES: "LOAD_GAME_SCORES",
+  SET_THEME: "SET_THEME",
 };
 
 // Reducer
@@ -71,7 +73,22 @@ export function appReducer(state, action) {
       return { ...state, currentPage: action.payload };
     case ACTIONS.SET_SELECTED_ITEM:
       return { ...state, selectedItem: action.payload };
-    // ... other cases
+    case ACTIONS.SET_LOADING:
+      return { ...state, loading: action.payload };
+    case ACTIONS.SET_ERROR:
+      return { ...state, error: action.payload };
+    case ACTIONS.UPDATE_GAME_SCORE:
+      return {
+        ...state,
+        gameScores: {
+          ...state.gameScores,
+          [action.payload.game]: action.payload.scores,
+        },
+      };
+    case ACTIONS.LOAD_GAME_SCORES:
+      return { ...state, gameScores: action.payload };
+    case ACTIONS.SET_THEME:
+      return { ...state, theme: action.payload };
     default:
       return state;
   }

@@ -12,9 +12,8 @@ const Button = ({ children, className = "", ...props }) => (
 const GameZoneHeader = () => {
   return (
     <div className="text-center mb-16">
-      <h2 className="text-5xl font-bold text-aml-dark mb-4">Nossos Jogos</h2>
-      <div className="w-24 h-1 bg-gradient-to-r from-aml-primary to-aml-action mx-auto mb-6"></div>
-      <p className="text-xl text-aml-dark max-w-2xl mx-auto">
+      <h2 className="text-5xl font-bold text-aml-dark dark:text-aml-light mb-4">Nossos Jogos</h2>
+      <p className="text-xl text-aml-dark/80 dark:text-aml-light/80 max-w-2xl mx-auto">
         Divirta-se com nossa coleção de jogos educativos e culturais.
       </p>
     </div>
@@ -24,7 +23,7 @@ const GameZoneHeader = () => {
 const GameCard = ({ game, onPlayClick }) => {
   return (
     <div 
-      className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group cursor-pointer flex flex-col"
+      className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group cursor-pointer flex flex-col"
       onClick={() => onPlayClick(game)}
     >
       <div className="relative h-48 bg-aml-secondary overflow-hidden">
@@ -36,8 +35,8 @@ const GameCard = ({ game, onPlayClick }) => {
         
       </div>
       <div className="p-6 flex-grow flex flex-col">
-        <h3 className="text-2xl font-bold text-aml-dark mb-2">{game.title}</h3>
-        <p className="text-aml-dark/80 mb-4 text-sm flex-grow">{game.description}</p>
+        <h3 className="text-2xl font-bold text-aml-dark dark:text-aml-light mb-2">{game.title}</h3>
+        <p className="text-aml-dark/80 dark:text-aml-light/80 mb-4 text-sm flex-grow">{game.description}</p>
         <Button
           className="w-full bg-aml-action text-white py-3 mt-auto flex items-center justify-center"
         >
@@ -51,7 +50,7 @@ const GameCard = ({ game, onPlayClick }) => {
 
 const GameZonePage = ({ onGameSelect }) => {
   return (
-    <section className="relative py-20 bg-aml-light min-h-screen">
+    <section className="relative py-20 bg-aml-light dark:bg-aml-darker min-h-screen">
        <div 
         className="absolute inset-0 w-full h-full z-0 pointer-events-none"
         style={{ 
@@ -90,9 +89,9 @@ function GameApp() {
     const GameComponent = currentGame.component;
 
     return (
-      <div className="relative min-h-screen bg-aml-light">
+      <div className="relative min-h-screen bg-aml-light dark:bg-aml-darker">
         <div 
-          className="absolute inset-0 w-full h-full z-0 pointer-events-none"
+          className="absolute inset-0 w-full h-full z-0 pointer-events-none dark:opacity-25"
           style={{ 
             backgroundImage: "url('/images/fundos/Folhas-Fundo.png')", 
             backgroundRepeat: 'repeat', 
@@ -119,7 +118,7 @@ function GameApp() {
             </Button>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-xl p-8 max-w-6xl mx-auto">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 max-w-6xl mx-auto">
             <GameComponent />
           </div>
         </div>

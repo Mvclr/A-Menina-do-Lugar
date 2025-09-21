@@ -17,7 +17,7 @@ const HeroSection = () => {
       className="relative bg-cover bg-center text-white py-32 px-6" 
       style={{ backgroundImage: "url('/images/fundos/Fundo_AML.png')" }}
     >
-      <div className="absolute inset-0 bg-black opacity-50"></div>
+      <div className="absolute inset-0 bg-black opacity-50 dark:opacity-70"></div>
       <div className="relative z-10 container mx-auto flex flex-col lg:flex-row items-center">
         <div className="lg:w-1/2 text-center lg:text-left mb-10 lg:mb-0">
           <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-4 text-aml-primary">

@@ -40,6 +40,15 @@ export function AppProvider({ children }) {
   
       loadScores();
     }, []);
+
+    // Atualizar tema
+    useEffect(() => {
+      if (state.theme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    }, [state.theme]);
   
     // Atualizar página atual baseado na rota
     useEffect(() => {
@@ -102,6 +111,11 @@ export function AppProvider({ children }) {
         }
       }
     };
+
+    const toggleTheme = () => {
+      const newTheme = state.theme === "light" ? "dark" : "light";
+      dispatch({ type: ACTIONS.SET_THEME, payload: newTheme });
+    };
   
     const value = {
       ...state,
@@ -110,6 +124,7 @@ export function AppProvider({ children }) {
       navigateToItem,
       updateGameScore,
       scrollToSection,
+      toggleTheme,
     };
   
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

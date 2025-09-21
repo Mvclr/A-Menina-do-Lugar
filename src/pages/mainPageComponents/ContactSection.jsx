@@ -72,13 +72,22 @@ const ContactSection = () => {
   return (
     <>
       {notification.show && <Notification message={notification.message} type={notification.type} onHide={hideNotification} />}
-      <section id="contact" className="py-20 bg-aml-secondary text-white">
-        <div className="container mx-auto px-6">
+      <section id="contact" className="relative py-20 bg-aml-light dark:bg-aml-darker">
+        <div 
+          className="absolute inset-0 w-full h-full z-0 pointer-events-none dark:opacity-25"
+          style={{ 
+            backgroundImage: "url('/images/fundos/Folhas-Fundo.png')", 
+            backgroundRepeat: 'repeat', 
+            backgroundSize: 'auto', 
+            opacity: 0.3 
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative z-10 container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold mb-4">Entre em Contato</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-aml-primary to-aml-action mx-auto"></div>
+            <h2 className="text-5xl font-bold text-aml-dark dark:text-aml-light mb-4">Entre em Contato</h2>
           </div>
-          <div className="max-w-2xl mx-auto bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 shadow-xl">
+          <div className="max-w-2xl mx-auto bg-gray-100 dark:bg-gray-800 rounded-2xl p-8 shadow-xl">
             <form ref={form} onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <input
@@ -88,7 +97,7 @@ const ContactSection = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-aml-primary transition-all duration-300"
+                  className="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-aml-primary transition-all duration-300"
                 />
               </div>
               <div>
@@ -99,7 +108,7 @@ const ContactSection = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-aml-primary transition-all duration-300"
+                  className="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-aml-primary transition-all duration-300"
                 />
               </div>
               <div>
@@ -110,7 +119,7 @@ const ContactSection = () => {
                   onChange={handleChange}
                   required
                   rows="5"
-                  className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-aml-primary transition-all duration-300 resize-none"
+                  className="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-aml-primary transition-all duration-300 resize-none"
                 ></textarea>
               </div>
               <button

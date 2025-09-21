@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useApp } from "../../context/AppContext";
+import { Sun, Moon } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { navigateToHome, navigateToGames, scrollToSection } = useApp();
+  const { navigateToHome, navigateToGames, scrollToSection, theme, toggleTheme } = useApp();
 
   const handleScrollToSection = (sectionId) => {
     scrollToSection(sectionId);
@@ -45,6 +46,9 @@ const Header = () => {
             >
               Jogos
             </button>
+            <button onClick={toggleTheme} className="text-white">
+              {theme === "light" ? <Moon size={24} /> : <Sun size={24} />}
+            </button>
           </nav>
 
           <button
@@ -62,6 +66,9 @@ const Header = () => {
             <button onClick={() => handleScrollToSection("items")} className="block w-full text-left py-2 rounded-md px-3 hover:bg-aml-secondary">Livros</button>
             <button onClick={() => handleScrollToSection("contact")} className="block w-full text-left py-2 rounded-md px-3 hover:bg-aml-secondary">Contato</button>
             <button onClick={handleGamesClick} className="block w-full text-left py-2 rounded-md px-3 hover:bg-aml-secondary">Jogos</button>
+            <button onClick={toggleTheme} className="block w-full text-left py-2 rounded-md px-3 hover:bg-aml-secondary">
+              {theme === "light" ? "Modo Escuro" : "Modo Claro"}
+            </button>
           </nav>
         )}
       </div>
