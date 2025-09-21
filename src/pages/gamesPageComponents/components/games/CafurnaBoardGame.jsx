@@ -4,13 +4,36 @@ const CafurnaBoardGame = () => {
   const [playerPosition, setPlayerPosition] = useState(0);
   const [diceRoll, setDiceRoll] = useState(null);
 
-  // Placeholder for the board spaces coordinates
-  // These would be the pixel coordinates (x, y) for the center of each space on the board image.
   const boardSpaces = [
-    { x: 100, y: 100 }, // Space 1
-    { x: 200, y: 100 }, // Space 2
-    { x: 300, y: 100 }, // Space 3
-    // ... and so on for all spaces
+    { x: 31, y: 78 },
+    { x: 116, y: 164 },
+    { x: 236, y: 98 },
+    { x: 435, y: 123 },
+    { x: 645, y: 86 },
+    { x: 898, y: 99 },
+    { x: 1061, y: 228 },
+    { x: 1040, y: 360 },
+    { x: 742, y: 270 },
+    { x: 451, y: 271 },
+    { x: 232, y: 276 },
+    { x: 53, y: 271 },
+    { x: 148, y: 470 },
+    { x: 370, y: 443 },
+    { x: 467, y: 368 },
+    { x: 636, y: 449 },
+    { x: 798, y: 378 },
+    { x: 978, y: 526 },
+    { x: 1047, y: 736 },
+    { x: 916, y: 709 },
+    { x: 713, y: 593 },
+    { x: 476, y: 503 },
+    { x: 326, y: 573 },
+    { x: 141, y: 591 },
+    { x: 136, y: 724 },
+    { x: 357, y: 701 },
+    { x: 471, y: 616 },
+    { x: 528, y: 751 },
+    { x: 741, y: 740 },
   ];
 
   const handleRollDice = () => {
@@ -18,33 +41,40 @@ const CafurnaBoardGame = () => {
     setDiceRoll(roll);
     setPlayerPosition((prev) => {
       const newPosition = prev + roll;
+      // Garante que o jogador não passe da última casa
       return newPosition >= boardSpaces.length ? boardSpaces.length - 1 : newPosition;
     });
   };
 
+  const playerCoords = boardSpaces.length > 0 ? boardSpaces[playerPosition] : null;
+
   return (
-    <div className="w-full mx-auto p-4">
+    <div className="w-full max-w-5xl mx-auto p-4">
       <h2 className="text-3xl font-bold text-center mb-4">Jogo de Tabuleiro de Cafurna</h2>
-      <div 
-        className="relative bg-no-repeat bg-center bg-contain mx-auto"
-        style={{ 
-          backgroundImage: `url('/images/jogos/cafurna/CafurnaJogoTabuleiro.png')`,
-          width: '1100px', // Adjust to your board's aspect ratio
-          height: '825px' // Adjust to your board's aspect ratio
-        }}
+      
+      <svg 
+        viewBox="0 0 1100 825"
+        className="w-full h-auto"
       >
-        {/* Player Piece */}
-        {boardSpaces.length > 0 && (
-          <div 
-            className="absolute w-8 h-8 bg-aml-primary rounded-full shadow-lg border-2 border-white"
-            style={{ 
-              left: `${boardSpaces[playerPosition].x}px`,
-              top: `${boardSpaces[playerPosition].y}px`,
-              transform: 'translate(-50%, -50%)'
-            }}
+        <image 
+          href="/images/jogos/cafurna/CafurnaJogoTabuleiro.png" 
+          width="1100" 
+          height="825" 
+        />
+
+        {playerCoords && (
+          <circle
+            cx={playerCoords.x}
+            cy={playerCoords.y}
+            r="20"
+            fill="#FF4500"
+            stroke="white"
+            strokeWidth="3"
+            style={{ transition: 'cx 0.5s ease, cy 0.5s ease' }}
           />
         )}
-      </div>
+      </svg>
+
       <div className="text-center mt-6">
         <button 
           onClick={handleRollDice}
