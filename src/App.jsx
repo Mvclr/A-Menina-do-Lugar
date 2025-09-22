@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import { useApp } from "./context/AppContext.js";
 import { AppProvider } from "./context/AppProvider.jsx";
+import { SocketProvider } from "./context/SocketProvider.jsx";
 import LoadingSpinner from "./components/LoadingSpinner.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
 import HomePage from "./pages/MainPage.jsx";
@@ -35,7 +36,9 @@ function App() {
     <ErrorBoundary>
       <Router>
         <AppProvider>
-          <AppRoutes />
+          <SocketProvider>
+            <AppRoutes />
+          </SocketProvider>
         </AppProvider>
       </Router>
     </ErrorBoundary>
